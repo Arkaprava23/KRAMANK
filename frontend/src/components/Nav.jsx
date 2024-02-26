@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiSearch } from "react-icons/fi";
 import { BsCart3 } from "react-icons/bs";
 import { GrMenu } from "react-icons/gr";
@@ -17,6 +17,8 @@ const NavBar = () => {
     const openDrawer = () => setOpen(true);
     const closeDrawer = () => setOpen(false);
 
+    const navigate = useNavigate();
+
     return (
         <div className="w-full fixed top-0 left-0 z-50 bg-white flex items-center justify-around p-4">
             <img className='w-40' src="images/logo.png" alt="" />
@@ -28,7 +30,7 @@ const NavBar = () => {
             <div className="hidden lg:flex items-center justify-center gap-8">
                 <FiSearch className='text-xl cursor-pointer' />
                 <BsCart3 className='text-xl cursor-pointer' />
-                <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-4'>
+                <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-4' onClick={()=>navigate("/login")}>
                     login
                 </button>
             </div>
@@ -63,7 +65,7 @@ const NavBar = () => {
                     <Link>Features</Link>
                 </div>
                 <div className="w-full flex items-center gap-2">
-                    <button className='bg-gray-900 text-white py-2 px-4'>
+                    <button className='bg-gray-900 text-white py-2 px-4' onClick={()=>navigate("/login")}>
                         login
                     </button>
                 </div>

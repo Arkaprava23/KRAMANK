@@ -2,7 +2,7 @@ import React from 'react';
 
 const LoginForm = () => {
   return (
-    <section className="flex items-center justify-center gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
+    <section className="w-full h-screen flex items-center justify-center gradient-form bg-neutral-200 dark:bg-neutral-700">
       <div className="container h-full p-10">
         <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
           <div className="w-full">
