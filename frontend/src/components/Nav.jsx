@@ -18,7 +18,7 @@ const NavBar = () => {
     const closeDrawer = () => setOpen(false);
 
     return (
-        <div className="w-full fixed top-0 left-0 z-50 flex items-center justify-around p-4">
+        <div className="w-full fixed top-0 left-0 z-50 bg-white flex items-center justify-around p-4">
             <img className='w-40' src="images/logo.png" alt="" />
             <div className="hidden lg:flex items-center justify-center gap-8">
                 <Link>Categories</Link>
@@ -28,7 +28,7 @@ const NavBar = () => {
             <div className="hidden lg:flex items-center justify-center gap-8">
                 <FiSearch className='text-xl cursor-pointer' />
                 <BsCart3 className='text-xl cursor-pointer' />
-                <button className='bg-gray-900 text-white py-2 px-4'>
+                <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-4'>
                     login
                 </button>
             </div>

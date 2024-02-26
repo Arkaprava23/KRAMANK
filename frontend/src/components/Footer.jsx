@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaFacebook, FaWhatsapp, FaInstagram, FaReddit } from "react-icons/fa";
 
 const Product = [
     {
@@ -24,9 +25,9 @@ const Company = [
 
 const Footer = () => {
     return (
-        <div className="w-full h-fit bg-gray-900 text-white flex flex-col items-center justify-center gap-8 py-6">
+        <div className="w-full h-fit bg-gray-900 text-white flex flex-col items-center justify-center gap-16 py-6">
             <div className="w-full flex items-start justify-around">
-                <div className='text-white text-3xl '>KRAMANK</div>
+                <img className='w-36' src="images/logo-white.png" alt="" />
                 <div className='w-fit flex items-center justify-center gap-16'>
                     <div className="flex flex-col items-start gap-4">
                         <div className='text-xl'>
@@ -66,8 +67,11 @@ const Footer = () => {
                 <div className='text-sm font-extralight'>
                     &copy; 2024 All rights reserved
                 </div>
-                <div>
-                    Social links
+                <div className='text-2xl flex items-center justify-center gap-8'>
+                    <Link><FaFacebook /></Link>
+                    <Link><FaWhatsapp  /></Link>
+                    <Link><FaInstagram  /></Link>
+                    <Link><FaReddit  /></Link>
                 </div>
 
             </div>
