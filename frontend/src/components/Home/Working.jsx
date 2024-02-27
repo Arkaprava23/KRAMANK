@@ -13,7 +13,7 @@ const Working = () => {
                         Create an account and complete company setup
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-start lg:justify-end gap-2">
+                <div className="w-full flex items-center justify-start gap-2">
                     <div className='text-xl py-2 px-4 rounded-[50%] text-white font-semibold bg-gray-900'>2</div>
                     <div className='text-xl font-semibold text-gray-900'>
                         Shop from variety of option
@@ -25,9 +25,9 @@ const Working = () => {
                         Choose your preferred slot for next day delivery
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-start lg:justify-end gap-2">
+                <div className="w-full flex items-center justify-start gap-2">
                     <div className='text-xl py-2 px-4 rounded-[50%] text-white font-semibold bg-gray-900'>4</div>
-                    <div className='w-full lg:w-[50%] text-xl font-semibold text-gray-900'>
+                    <div className='w-full text-xl font-semibold text-gray-900'>
                         Pay using Credit card, Debit card, NetBanking, UPI or Cash on delivery
                     </div>
                 </div>
