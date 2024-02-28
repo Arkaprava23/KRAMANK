@@ -23,9 +23,8 @@ const NavBar = () => {
         <div className="w-full fixed top-0 left-0 z-50 bg-white flex items-center justify-around p-4">
             <img className='w-40' src="images/logo.png" alt="" />
             <div className="hidden lg:flex items-center justify-center gap-8">
-                <Link>Categories</Link>
-                <Link>Collections</Link>
-                <Link>Features</Link>
+                <Link onClick={() => window.location.replace("/#categories")}>Categories</Link>
+                <Link onClick={() => window.location.replace("/#features")}>Features</Link>
             </div>
             <div className="hidden lg:flex items-center justify-center gap-8">
                 <FiSearch className='text-xl cursor-pointer' />
@@ -60,9 +59,8 @@ const NavBar = () => {
                     </IconButton>
                 </div>
                 <div className="flex flex-col items-start gap-2">
-                    <Link>Categories</Link>
-                    <Link>Collections</Link>
-                    <Link>Features</Link>
+                    <Link onClick={() => window.location.replace("/#categories")}>Categories</Link>
+                    <Link onClick={() => window.location.replace("/#features")}>Features</Link>
                 </div>
                 <div className="w-full flex items-center gap-2">
                     <button className='bg-gray-900 text-white py-2 px-4' onClick={()=>navigate("/login")}>
