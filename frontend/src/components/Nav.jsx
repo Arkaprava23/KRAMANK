@@ -19,6 +19,13 @@ const NavBar = () => {
 
     const navigate = useNavigate();
 
+    const isUserLoggedIn = localStorage.getItem('token') ? true : false;
+
+    const handleLogout = () => {
+        localStorage.clear();
+        navigate("/");
+    }
+
     return (
         <div className="w-full fixed top-0 left-0 z-50 bg-white flex items-center justify-around p-4">
             <img className='w-40' src="images/logo.png" alt="" />
@@ -28,11 +35,20 @@ const NavBar = () => {
                 <Link onClick={() => window.location.replace("/#features")}>Features</Link>
             </div>
             <div className="hidden lg:flex items-center justify-center gap-8">
-                <FiSearch className='text-xl cursor-pointer' />
-                <BsCart3 className='text-xl cursor-pointer' />
-                <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-4' onClick={()=>navigate("/login")}>
-                    login
-                </button>
+                {
+                    isUserLoggedIn ?
+                        <>
+                            <FiSearch className='text-xl cursor-pointer' />
+                            <BsCart3 className='text-xl cursor-pointer' />
+                            <button className='bg-transparent text-gray-900 hover:text-red-600 border border-solid border-gray-900 hover:border-red-600 py-2 px-4' onClick={handleLogout}>
+                                logout
+                            </button>
+                        </>
+                        :
+                        <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-4' onClick={() => navigate("/login")}>
+                            login
+                        </button>
+                }
             </div>
             <div className="flex lg:hidden items-center justify-center gap-8">
                 <GrMenu onClick={openDrawer} className='text-xl cursor-pointer' />
@@ -64,7 +80,7 @@ const NavBar = () => {
                     <Link onClick={() => window.location.replace("/#features")}>Features</Link>
                 </div>
                 <div className="w-full flex items-center gap-2">
-                    <button className='bg-gray-900 text-white py-2 px-4' onClick={()=>navigate("/login")}>
+                    <button className='bg-gray-900 text-white py-2 px-4' onClick={() => navigate("/login")}>
                         login
                     </button>
                 </div>

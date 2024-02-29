@@ -72,7 +72,7 @@ const LoginForm = () => {
 						await response.data;
 					console.log(token);
 					localStorage.setItem("token", token);
-					navigate("/");
+					navigate("/products");
 				} else if (response.status === 202) {
 					toast.error("user not found");
 				} else if (response.status === 203) {
