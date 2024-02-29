@@ -23,6 +23,7 @@ const NavBar = () => {
         <div className="w-full fixed top-0 left-0 z-50 bg-white flex items-center justify-around p-4">
             <img className='w-40' src="images/logo.png" alt="" />
             <div className="hidden lg:flex items-center justify-center gap-8">
+                <Link to={"/"}>Home</Link>
                 <Link onClick={() => window.location.replace("/#categories")}>Categories</Link>
                 <Link onClick={() => window.location.replace("/#features")}>Features</Link>
             </div>

@@ -67,7 +67,7 @@ const Footer = () => {
                 <div className='text-sm font-extralight'>
                     &copy; 2024 All rights reserved
                 </div>
-                <div className='text-2xl flex items-center justify-center gap-8'>
+                <div className='text-2xl flex items-center justify-center gap-4 lg:gap-8'>
                     <Link><FaFacebook /></Link>
                     <Link><FaWhatsapp  /></Link>
                     <Link><FaInstagram  /></Link>

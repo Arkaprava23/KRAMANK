@@ -10,7 +10,7 @@ const Home = () => {
         <MainLayout>
             <div className="w-full flex flex-col items-center">
                 <Hero />
-                <Categories />
+                <Categories linksHidden={true} labelName="Categories" />
                 <WhyUs />
                 <Working />
             </div>

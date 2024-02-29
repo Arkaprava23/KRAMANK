@@ -1,37 +1,47 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-const CategoryCard = ({image, name}) => {
-    return(
-        <div className="min-w-[16rem] flex flex-col items-center p-4 border border-solid border-gray-900 rounded-lg gap-3 mb-2">
-            <img className='w-full' src={`images/${image}`} alt="" />
+const CategoryCard = ({ image, name, link, linksHidden }) => {
+
+    const navigate = useNavigate();
+
+    return (
+        <div className="min-w-[16rem] flex flex-col items-center p-4 border border-solid border-gray-900 rounded-lg gap-3 mb-2" >
+            {
+                linksHidden ?
+                    <img className='w-full' src={`images/${image}`} alt="" />
+                    : <Link to={link}>
+                        <img className='w-full' src={`images/${image}`} alt="" />
+                    </Link>
+            }
             <div className="w-full flex flex-col items-start gap-2 bg-gray-900 text-white p-3 rounded-md">
                 <div className="w-full text-xl font-semibold">
                     {name}
                 </div>
-                <button className='w-full border border-solid border-white py-2 px-4 whitespace-nowrap hover:bg-white hover:text-gray-900 font-medium hover:font-semibold'>
+                {/* <button className='w-full border border-solid border-white py-2 px-4 whitespace-nowrap hover:bg-white hover:text-gray-900 font-medium hover:font-semibold'>
                     Check out
-                </button>
+                </button> */}
             </div>
         </div>
     )
 }
 
-const Categories = () => {
+const Categories = ({ linksHidden, labelName }) => {
     return (
         <>
             <div id='categories'>&emsp;</div>
             <div className="w-full h-fit flex flex-col items-center gap-6 m-16">
                 <div className="w-full text-center text-3xl lg:text-4xl font-bold">
-                    6+ Categories
+                    {labelName}
                 </div>
                 <div className="w-[90%] lg:w-[95%] flex items-center justify-start gap-6 overflow-x-scroll">
-                    <CategoryCard image='catFruit.png' name="Fresh fruits" />
-                    <CategoryCard image='catJuice.png' name="Fresh juice" />
-                    <CategoryCard image='catSnacks.png' name="Delicious snacks" />
-                    <CategoryCard image='catSweets.png' name="Sweets & Desserts" />
-                    <CategoryCard image='catRest.png' name="Daily essentials" />
-                    <CategoryCard image='catGift.png' name="Exciting gifts" />
-                    <CategoryCard image='catFruit.png' name="Fresh fruits" />
+                    <CategoryCard image='catFruit.png' name="Fresh fruits" link="/test" linksHidden={linksHidden} />
+                    <CategoryCard image='catJuice.png' name="Fresh juice" link="" linksHidden={linksHidden} />
+                    <CategoryCard image='catSnacks.png' name="Delicious snacks" link="" linksHidden={linksHidden} />
+                    <CategoryCard image='catSweets.png' name="Sweets & Desserts" link="" linksHidden={linksHidden} />
+                    <CategoryCard image='catRest.png' name="Daily essentials" link="" linksHidden={linksHidden} />
+                    <CategoryCard image='catGift.png' name="Exciting gifts" link="" linksHidden={linksHidden} />
+                    <CategoryCard image='catFruit.png' name="Fresh fruits" link="" linksHidden={linksHidden} />
                 </div>
             </div>
         </>
