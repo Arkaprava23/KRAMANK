@@ -51,6 +51,13 @@ const NavBar = () => {
                 }
             </div>
             <div className="flex lg:hidden items-center justify-center gap-8">
+                {
+                    isUserLoggedIn ?
+                        <>
+                            <FiSearch className='text-xl cursor-pointer' />
+                            <BsCart3 className='text-xl cursor-pointer' />
+                        </> : ''
+                }
                 <GrMenu onClick={openDrawer} className='text-xl cursor-pointer' />
             </div>
             <Drawer open={open} onClose={closeDrawer} className="flex flex-col items-start gap-8 p-4">
@@ -76,13 +83,21 @@ const NavBar = () => {
                     </IconButton>
                 </div>
                 <div className="flex flex-col items-start gap-2">
+                    <Link to={"/"}>Home</Link>
                     <Link onClick={() => window.location.replace("/#categories")}>Categories</Link>
                     <Link onClick={() => window.location.replace("/#features")}>Features</Link>
                 </div>
                 <div className="w-full flex items-center gap-2">
-                    <button className='bg-gray-900 text-white py-2 px-4' onClick={() => navigate("/login")}>
-                        login
-                    </button>
+                    {
+                        isUserLoggedIn ?
+                            <button className='bg-transparent text-gray-900 hover:text-red-600 border border-solid border-gray-900 hover:border-red-600 py-2 px-4' onClick={handleLogout}>
+                                logout
+                            </button>
+                            :
+                            <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-4' onClick={() => navigate("/login")}>
+                                login
+                            </button>
+                    }
                 </div>
             </Drawer>
         </div>
