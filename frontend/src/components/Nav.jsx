@@ -28,9 +28,9 @@ const NavBar = () => {
             <div className="hidden lg:flex items-center justify-center gap-8">
                 <FiSearch className='text-xl cursor-pointer' />
                 <BsCart3 className='text-xl cursor-pointer' />
-                <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-4'>
+                <a href='/login' className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-4'>
                     login
-                </button>
+                </a>
             </div>
             <div className="flex lg:hidden items-center justify-center gap-8">
                 <GrMenu onClick={openDrawer} className='text-xl cursor-pointer' />
