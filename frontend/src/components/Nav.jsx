@@ -29,16 +29,21 @@ const NavBar = () => {
     return (
         <div className="w-full fixed top-0 left-0 z-50 bg-white flex items-center justify-around p-4">
             <img className='w-40' src="images/logo.png" alt="" />
-            <div className="hidden lg:flex items-center justify-center gap-8">
-                <Link to={"/"}>Home</Link>
-                <Link onClick={() => window.location.replace("/#categories")}>Categories</Link>
-                <Link onClick={() => window.location.replace("/#features")}>Features</Link>
-            </div>
+            {
+                !isUserLoggedIn ?
+                    <div className="hidden lg:flex items-center justify-center gap-8">
+                        <Link to={"/"}>Home</Link>
+                        <Link onClick={() => window.location.replace("/#categories")}>Categories</Link>
+                        <Link onClick={() => window.location.replace("/#features")}>Features</Link>
+                    </div> :
+                    <div className="w-fit">
+
+                    </div>
+            }
             <div className="hidden lg:flex items-center justify-center gap-8">
                 {
                     isUserLoggedIn ?
                         <>
-                            <FiSearch className='text-xl cursor-pointer' />
                             <BsCart3 className='text-xl cursor-pointer' />
                             <button className='bg-transparent text-gray-900 hover:text-red-600 border border-solid border-gray-900 hover:border-red-600 py-2 px-4' onClick={handleLogout}>
                                 logout
@@ -54,13 +59,21 @@ const NavBar = () => {
                 {
                     isUserLoggedIn ?
                         <>
-                            <FiSearch className='text-xl cursor-pointer' />
                             <BsCart3 className='text-xl cursor-pointer' />
                         </> : ''
                 }
-                <GrMenu onClick={openDrawer} className='text-xl cursor-pointer' />
+                {
+                    isUserLoggedIn ?
+                        <button className='bg-transparent text-gray-900 hover:text-red-600 border border-solid border-gray-900 hover:border-red-600 py-2 px-4' onClick={handleLogout}>
+                            logout
+                        </button>
+                        :
+                        <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-4' onClick={() => navigate("/login")}>
+                            login
+                        </button>
+                }
             </div>
-            <Drawer open={open} onClose={closeDrawer} className="flex flex-col items-start gap-8 p-4">
+            {/* <Drawer open={open} onClose={closeDrawer} className="flex flex-col items-start gap-8 p-4">
                 <div className="mb-2 w-full flex items-center justify-between">
                     <div className='text-xl'>
                         Welcome,
@@ -99,7 +112,7 @@ const NavBar = () => {
                             </button>
                     }
                 </div>
-            </Drawer>
+            </Drawer> */}
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 const CategoryCard = ({ image, name, link, linksHidden }) => {
 
@@ -10,9 +11,9 @@ const CategoryCard = ({ image, name, link, linksHidden }) => {
             {
                 linksHidden ?
                     <img className='w-full' src={`images/${image}`} alt="" />
-                    : <Link to={link}>
-                        <img className='w-full' src={`images/${image}`} alt="" />
-                    </Link>
+                    : <HashLink to={link} smooth>
+                        <img className='w-full rounded-[50%]' src={`../images/${image}`} alt="" />
+                    </HashLink>
             }
             <div className="w-full flex flex-col items-start gap-2 bg-gray-900 text-white p-3 rounded-md">
                 <div className="w-full text-xl font-semibold">
@@ -35,7 +36,7 @@ const Categories = ({ linksHidden, labelName }) => {
                     {labelName}
                 </div>
                 <div className="w-[90%] lg:w-[95%] flex items-center justify-start gap-6 overflow-x-scroll">
-                    <CategoryCard image='catFruit.png' name="Fresh fruits" link="/test" linksHidden={linksHidden} />
+                    <CategoryCard image='catFruit.png' name="Fresh fruits" link=".#fresh-fruits" linksHidden={linksHidden} />
                     <CategoryCard image='catJuice.png' name="Fresh juice" link="" linksHidden={linksHidden} />
                     <CategoryCard image='catSnacks.png' name="Delicious snacks" link="" linksHidden={linksHidden} />
                     <CategoryCard image='catSweets.png' name="Sweets & Desserts" link="" linksHidden={linksHidden} />
