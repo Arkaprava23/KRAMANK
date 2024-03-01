@@ -27,12 +27,12 @@ const NavBar = () => {
     }
 
     return (
-        <div className="w-full fixed top-0 left-0 z-50 bg-white flex items-center justify-around p-4">
-            <img className='w-40' src="images/logo.png" alt="" />
+        <div className="w-full fixed top-0 left-0 z-50 bg-white flex items-center justify-between p-4">
+            <img className='w-44' src="images/logo.png" alt="" />
             {
                 !isUserLoggedIn ?
                     <div className="hidden lg:flex items-center justify-center gap-8">
-                        <Link to={"/"}>Home</Link>
+                        <Link onClick={() => window.location.replace("/#home")}>Home</Link>
                         <Link onClick={() => window.location.replace("/#categories")}>Categories</Link>
                         <Link onClick={() => window.location.replace("/#features")}>Features</Link>
                     </div> :
@@ -50,8 +50,8 @@ const NavBar = () => {
                             </button>
                         </>
                         :
-                        <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-4' onClick={() => navigate("/login")}>
-                            login
+                        <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-6 rounded-[2rem]' onClick={() => navigate("/login")}>
+                            login / signup
                         </button>
                 }
             </div>
@@ -68,8 +68,8 @@ const NavBar = () => {
                             logout
                         </button>
                         :
-                        <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-4' onClick={() => navigate("/login")}>
-                            login
+                        <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-6 rounded-[2rem]' onClick={() => navigate("/login")}>
+                            login / signup
                         </button>
                 }
             </div>

@@ -11,10 +11,18 @@ const userSchema = new mongoose.Schema({
         unique: true,
         lowercase: true
     },
+    phoneNo: {
+        type: String,
+        required: true
+    },
     password: {
         type: String,
         required: true,
     },
+    isVarified:{
+        type:Boolean,
+        default:false,
+    }
    
 });
 

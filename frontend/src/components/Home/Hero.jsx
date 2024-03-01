@@ -7,7 +7,7 @@ const Hero = () => {
     const isUserLoggedIn = localStorage.getItem('token') ? true : false;
 
     return (
-        <div className='mt-8 w-full h-screen p-8 flex flex-col items-center justify-center bg-gradient-to-b from-gray-300 to-stone-50 gap-8 bg-cover bg-no-repeat' style={{backgroundImage: "url(images/homeBG.png"}}>
+        <div id='home' className='mt-8 w-full h-screen p-8 flex flex-col items-center justify-center bg-gradient-to-b from-gray-300 to-stone-50 gap-8 bg-cover bg-no-repeat' style={{backgroundImage: "url(images/homeBG.png"}}>
             <div className="w-[100%] text-white lg:w-[70%] text-center text-2xl lg:text-3xl font-semibold">2000+ Products • 6+ Categories</div>
             <div className="w-[100%] text-white lg:w-[70%] text-center text-4xl lg:text-6xl font-bold leading-[1.3]">
                 All your corporate needs delivered next day.
