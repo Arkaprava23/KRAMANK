@@ -1,53 +1,34 @@
 import React from "react";
-import { FaCircleInfo } from "react-icons/fa6";
-import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { MdVerifiedUser } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import VerificationButton from "../pages/Verification";
+
 const VerifyAlert = () => {
-    const navigate = useNavigate();
+	const navigate = useNavigate();
 
-    const handleVerify = () => {
-        navigate("/verify");
-    }
-    return (
-        <div
-            id="alert-additional-content-1"
-            className=" fixed bottom-0 w-full p-4  text-white border bg-gray-900 dark:bg-gray-800 dark:text-white "
-            role="alert"
-        >
-            <div className="flex gap-2 items-center">
+	const handleVerify = () => {
+		navigate("/verify");
+	};
 
-                <FaCircleInfo className="text-lg text-gray-300" />
-                <span className="sr-only">Info</span>
-                <h3 className="text-lg font-medium">Verify your profile</h3>
-
-
-
-            </div>
-            <div className="mt-2 mb-4 text-sm">
-                Enhance your credibility by verifying your profile. Verified profiles
-                gain trust from others, enjoy increased visibility, and often access
-                exclusive features.
-            </div>
-            <div className="flex">
-                <button
-                    type="button"
-                    className=" text-gray-900 bg-white hover:bg-gray-900 hover:text-white border focus:ring-4 focus:outline-none  font-medium rounded-lg text-xs px-3 py-1.5 me-2 text-center inline-flex gap-0.5 items-center "
-                    onClick={handleVerify}
-                >
-                    <RiVerifiedBadgeFill />
-                    Verify
-                </button>
-                <button
-                    type="button"
-                    className="text-white bg-transparent border  hover:bg-white hover:text-gray-900 focus:ring-4 focus:outline-none  font-medium rounded-lg text-xs px-3 py-1.5 text-center "
-                    data-dismiss-target="#alert-additional-content-1"
-                    aria-label="Close"
-                >
-                    Dismiss
-                </button>
-            </div>
-        </div>
-    );
+	return (
+		<div
+			id="alert-additional-content-1"
+			className=" fixed bottom-0 left-0 right-0 mx-auto w-full lg:w-2/6 md:w-2/4  p-4 bg-white border border-gray-500 rounded-full shadow-xl mb-4"
+			role="alert"
+		>
+			<div className="flex items-center gap-2 justify-center w-full">
+				<div className="flex items-center justify-center">
+					<MdVerifiedUser className="text-4xl" />
+				</div>
+				<p className="mt-2 mb-4 text-sm text-gray-700">
+					Complete your company setup to continue exploring
+				</p>
+				<div className="flex justify-center">
+				<VerificationButton/>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default VerifyAlert;

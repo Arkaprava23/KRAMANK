@@ -9,7 +9,7 @@ const MainLayout = ({children}) => {
             <NavBar />
             <div className="flex-grow">{children}</div>
             <Footer />
-            {/* <VerifyAlert /> */}
+             <VerifyAlert /> 
         </div>
     );
 };

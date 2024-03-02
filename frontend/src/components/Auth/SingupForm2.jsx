@@ -16,73 +16,6 @@ const SignupForm2 = () => {
 		confirmPassword: "",
 	});
 
-<<<<<<< HEAD
-  const validator = () => {
-    let isValid = true;
-
-    // Password validation
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-    if (!passwordRegex.test(password)) {
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            password:
-                "Password must be at least 8 characters long and contain at least one special character, one digit, and one letter",
-        }));
-        isValid = false;
-    } else {
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            password: "",
-        }));
-    }
-
-    // Confirm password validation
-    if (password !== confirmPassword) {
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            confirmPassword: " Passwords do not match",
-        }));
-        isValid = false;
-    } else {
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            confirmPassword: "",
-        }));
-    }
-
-    return isValid;
-};
-
-const handleSubmit = async (e) => {
-    e.preventDefault();
-    const isValid = validator();
-
-    if (isValid) {
-        try {
-            setLoading(true);
-            const userData = {
-                username: signupName,
-                email: signupEmail,
-                password,
-            };
-
-            const response = await axios.post("http://localhost:5050/signup", userData);
-
-            if (response.status === 200) {
-                navigate("/login");
-                toast.success("Signup successful");
-            } else if (response.status === 202) {
-                toast.error("User Already Exists");
-            }
-        } catch (error) {
-            console.error(error);
-            toast.error("Something went wrong");
-        } finally {
-            setLoading(false);
-        }
-    }
-};
-=======
 	const validator = () => {
 		let isValid = true;
 
@@ -148,7 +81,6 @@ const handleSubmit = async (e) => {
 			}
 		}
 	};
->>>>>>> 04546eb7d05ec58f099e58f213a795634316f34f
 
 	return (
 		<section className="w-full h-screen flex items-center justify-center gradient-form bg-neutral-200 dark:bg-neutral-700">
@@ -184,11 +116,7 @@ const handleSubmit = async (e) => {
 													required
 													value={password}
 													onChange={(e) => setPassword(e.target.value)}
-<<<<<<< HEAD
-                          disabled={loading}
-=======
 													disabled={loading}
->>>>>>> 04546eb7d05ec58f099e58f213a795634316f34f
 												/>
 												<label className="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
 													Password
@@ -207,11 +135,7 @@ const handleSubmit = async (e) => {
 													value={confirmPassword}
 													onChange={(e) => setConfirmPassword(e.target.value)} // Updated value and onChange for confirm password
 													required
-<<<<<<< HEAD
-                          disabled={loading}
-=======
 													disabled={loading}
->>>>>>> 04546eb7d05ec58f099e58f213a795634316f34f
 												/>
 												<label className="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
 													Confirm Password
@@ -244,20 +168,13 @@ const handleSubmit = async (e) => {
 											<div className="flex items-center justify-between pb-6">
 												<p className="mb-0 mr-2">Already have an account?</p>
 												<button
-<<<<<<< HEAD
-=======
 													onClick={() => navigate("/login")}
->>>>>>> 04546eb7d05ec58f099e58f213a795634316f34f
 													type="button"
 													className="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
 													data-te-ripple-init
 													data-te-ripple-color="light"
 												>
-<<<<<<< HEAD
-													<a href="/login">Login</a>
-=======
 													Login
->>>>>>> 04546eb7d05ec58f099e58f213a795634316f34f
 												</button>
 											</div>
 										</form>
