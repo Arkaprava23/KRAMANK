@@ -1,13 +1,15 @@
 import React from 'react';
 import NavBar from '../components/Nav';
 import Footer from '../components/Footer';
+import VerifyAlert from '../components/VerifyAlert';
 
 const MainLayout = ({children}) => {
     return (
-        <div className="w-full flex flex-col items-center justify-start">
+        <div className="flex flex-col min-h-screen">
             <NavBar />
-            {children}
+            <div className="flex-grow">{children}</div>
             <Footer />
+            {/* <VerifyAlert /> */}
         </div>
     );
 };

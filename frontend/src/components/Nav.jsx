@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiSearch } from "react-icons/fi";
 import { BsCart3 } from "react-icons/bs";
 import { GrMenu } from "react-icons/gr";
@@ -17,25 +17,63 @@ const NavBar = () => {
     const openDrawer = () => setOpen(true);
     const closeDrawer = () => setOpen(false);
 
+    const navigate = useNavigate();
+
+    const isUserLoggedIn = localStorage.getItem('token') ? true : false;
+
+    const handleLogout = () => {
+        localStorage.clear();
+        navigate("/");
+    }
+
     return (
-        <div className="w-full fixed top-0 left-0 z-50 bg-white flex items-center justify-around p-4">
-            <img className='w-40' src="images/logo.png" alt="" />
+        <div className="w-full fixed top-0 left-0 z-50 bg-white flex items-center justify-between p-4">
+            <img className='w-44' src="images/logo.png" alt="" />
+            {
+                !isUserLoggedIn ?
+                    <div className="hidden lg:flex items-center justify-center gap-8">
+                        <Link onClick={() => window.location.replace("/#home")}>Home</Link>
+                        <Link onClick={() => window.location.replace("/#categories")}>Categories</Link>
+                        <Link onClick={() => window.location.replace("/#features")}>Features</Link>
+                    </div> :
+                    <div className="w-fit">
+
+                    </div>
+            }
             <div className="hidden lg:flex items-center justify-center gap-8">
-                <Link>Categories</Link>
-                <Link>Collections</Link>
-                <Link>Features</Link>
-            </div>
-            <div className="hidden lg:flex items-center justify-center gap-8">
-                <FiSearch className='text-xl cursor-pointer' />
-                <BsCart3 className='text-xl cursor-pointer' />
-                <a href='/login' className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-4'>
-                    login
-                </a>
+                {
+                    isUserLoggedIn ?
+                        <>
+                            <BsCart3 className='text-xl cursor-pointer' />
+                            <button className='bg-transparent text-gray-900 hover:text-red-600 border border-solid border-gray-900 hover:border-red-600 py-2 px-4' onClick={handleLogout}>
+                                logout
+                            </button>
+                        </>
+                        :
+                        <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-6 rounded-[2rem]' onClick={() => navigate("/login")}>
+                            login / signup
+                        </button>
+                }
             </div>
             <div className="flex lg:hidden items-center justify-center gap-8">
-                <GrMenu onClick={openDrawer} className='text-xl cursor-pointer' />
+                {
+                    isUserLoggedIn ?
+                        <>
+                            <BsCart3 className='text-xl cursor-pointer' />
+                        </> : ''
+                }
+                {
+                    isUserLoggedIn ?
+                        <button className='bg-transparent text-gray-900 hover:text-red-600 border border-solid border-gray-900 hover:border-red-600 py-2 px-4' onClick={handleLogout}>
+                            logout
+                        </button>
+                        :
+                        <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-6 rounded-[2rem]' onClick={() => navigate("/login")}>
+                            login / signup
+                        </button>
+                }
             </div>
-            <Drawer open={open} onClose={closeDrawer} className="flex flex-col items-start gap-8 p-4">
+            {/* <Drawer open={open} onClose={closeDrawer} className="flex flex-col items-start gap-8 p-4">
                 <div className="mb-2 w-full flex items-center justify-between">
                     <div className='text-xl'>
                         Welcome,
@@ -58,16 +96,23 @@ const NavBar = () => {
                     </IconButton>
                 </div>
                 <div className="flex flex-col items-start gap-2">
-                    <Link>Categories</Link>
-                    <Link>Collections</Link>
-                    <Link>Features</Link>
+                    <Link to={"/"}>Home</Link>
+                    <Link onClick={() => window.location.replace("/#categories")}>Categories</Link>
+                    <Link onClick={() => window.location.replace("/#features")}>Features</Link>
                 </div>
                 <div className="w-full flex items-center gap-2">
-                    <button className='bg-gray-900 text-white py-2 px-4'>
-                        login
-                    </button>
+                    {
+                        isUserLoggedIn ?
+                            <button className='bg-transparent text-gray-900 hover:text-red-600 border border-solid border-gray-900 hover:border-red-600 py-2 px-4' onClick={handleLogout}>
+                                logout
+                            </button>
+                            :
+                            <button className='bg-gray-900 hover:bg-blue-gray-800 text-white py-2 px-4' onClick={() => navigate("/login")}>
+                                login
+                            </button>
+                    }
                 </div>
-            </Drawer>
+            </Drawer> */}
         </div>
     );
 };
