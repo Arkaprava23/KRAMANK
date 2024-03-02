@@ -6,7 +6,7 @@ import SignupPage from './pages/SignupPage'
 import SignupPage2 from './pages/SignupPage2'
 import ProductPage from './pages/ProductPage'
 import ContactUs from './pages/ContactPage'
-import Verification from './pages/Verification'
+import CompanyVerificationPage from './pages/CompanyVerificationPage'
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
 
       <Route path="/products" element={<ProductPage/>} />
       <Route path="/contact" element={<ContactUs/>} />
-      <Route path="/verify" element={<Verification/>} />
+      <Route path="/verify" element={<CompanyVerificationPage/>} />
       
     </Routes>
   )

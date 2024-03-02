@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../components/Nav';
 import Footer from '../components/Footer';
-import VerifyAlert from '../components/VerifyAlert';
+import VerifyAlert from '../components/Verification/Alert';
 
 const MainLayout = ({children}) => {
     return (
