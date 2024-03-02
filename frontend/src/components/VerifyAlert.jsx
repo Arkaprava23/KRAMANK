@@ -20,11 +20,11 @@ const VerifyAlert = () => {
 				<div className="flex items-center justify-center">
 					<MdVerifiedUser className="text-4xl" />
 				</div>
-				<p className="mt-2 mb-4 text-sm text-gray-700">
+				<div className="text-sm text-gray-700">
 					Complete your company setup to continue exploring
-				</p>
+				</div>
 				<div className="flex justify-center">
-				<VerificationButton/>
+					<VerificationButton />
 				</div>
 			</div>
 		</div>

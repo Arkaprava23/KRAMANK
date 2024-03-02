@@ -4,6 +4,7 @@ import { useAuthContext } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { BACKEND_APP_API_URL } from "../../../links/Links";
 
 const SignupForm2 = () => {
 	const navigate = useNavigate();
@@ -65,7 +66,7 @@ const SignupForm2 = () => {
 					password,
 				};
 
-				const response = await axios.post("https://kramank.onrender.com/signup", userData);
+				const response = await axios.post(BACKEND_APP_API_URL + "/signup", userData);
 
 				if (response.status === 200) {
 					navigate("/login");
