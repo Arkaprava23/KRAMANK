@@ -1,4 +1,7 @@
 import React, { createContext, useState, useContext } from 'react';
+import {
+    useDisclosure,
+  } from '@chakra-ui/react'
 
 const AppContext = createContext();
 
@@ -41,11 +44,10 @@ export const AppContextProvider = ({ children }) => {
         }
     };
 
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(!open);
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
-        <AppContext.Provider value={{ cart, addToCart, open, handleOpen }}>
+        <AppContext.Provider value={{ cart, addToCart, isOpen, onOpen, onClose }}>
             {children}
         </AppContext.Provider>
     );

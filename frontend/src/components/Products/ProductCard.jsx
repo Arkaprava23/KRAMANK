@@ -4,7 +4,15 @@ import { MdOutlineCancel } from "react-icons/md";
 import { CiDiscount1 } from "react-icons/ci";
 import { FiMinus } from "react-icons/fi";
 import { useAppContext } from '../../../ContextReducer/AppContext';
-import { Dialog, DialogBody } from "@material-tailwind/react";
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+} from '@chakra-ui/react'
 import { AiOutlineClose } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +20,7 @@ const ProductCard = ({ data }) => {
 
     const navigate = useNavigate();
 
-    const { cart, addToCart, open, handleOpen } = useAppContext();
+    const { cart, addToCart, isOpen, onOpen, onClose } = useAppContext();
 
     const [quantity, setQuantity] = useState(Number(data.minQuantity));
 
@@ -122,51 +130,51 @@ const ProductCard = ({ data }) => {
             </div>
 
             {/* Cart */}
-            <Dialog open={open} handler={handleOpen}>
-                <DialogBody>
-                    <div className="w-full flex items-center justify-between p-4">
-                        <div className='text-gray-900 text-xl font-semibold'>Your Cart</div>
-                        <AiOutlineClose className='text-xl cursor-pointer text-gray-900' onClick={handleOpen} />
-                    </div>
-
-                    {
-                        cart.length > 0
-                            ?
-                            <div className="w-full h-[20rem] flex flex-col items-center gap-2 overflow-y-auto">
-                                {cart.map((item) => {
-                                    return (
-                                        <div className="w-[90%] p-4 border border-solid border-gray-600 rounded-lg flex items-start justify-between">
-                                            <div className="flex flex-col items-start gap-1">
-                                                <div className='text-gray-900 text-lg font-semibold'>{item.name}</div>
-                                                <div className='text-gray-700 text-base'>₹{item.amount}</div>
+            <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent className='p-4'>
+                    <div className='text-gray-900 text-xl font-semibold'>Your Cart</div>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        {
+                            cart.length > 0
+                                ?
+                                <div className="w-full h-[20rem] flex flex-col items-center gap-2 overflow-y-auto">
+                                    {cart.map((item) => {
+                                        return (
+                                            <div className="w-[90%] p-4 border border-solid border-gray-600 rounded-lg flex items-start justify-between">
+                                                <div className="flex flex-col items-start gap-1">
+                                                    <div className='text-gray-900 text-lg font-semibold'>{item.name}</div>
+                                                    <div className='text-gray-700 text-base'>₹{item.amount}</div>
+                                                </div>
+                                                <div className="flex flex-col items-end gap-1">
+                                                    <div className='text-gray-900 text-xl font-semibold'>₹{item.price}</div>
+                                                    <button className='flex items-center justify-center gap-3 border-2 boreder-solid border-gray-900 text-gray-900 font-semibold py-2 px-3 rounded-md'>
+                                                        <FiMinus className={`cursor-pointer text-lg ${item.quantity === 0 ? 'hidden' : 'block'}`} onClick={decreaseHandler} />
+                                                        {
+                                                            item.quantity === 0 ? <div>ADD</div> : <div>{item.quantity}</div>
+                                                        }
+                                                        <IoMdAdd className={`cursor-pointer text-lg ${item.quantity === data.maxQuantity ? 'hidden' : 'block'}`} onClick={increaseHandler} />
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div className="flex flex-col items-end gap-1">
-                                                <div className='text-gray-900 text-xl font-semibold'>₹{item.price}</div>
-                                                <button className='flex items-center justify-center gap-3 border-2 boreder-solid border-gray-900 text-gray-900 font-semibold py-2 px-3 rounded-md'>
-                                                    <FiMinus className={`cursor-pointer text-lg ${item.quantity === 0 ? 'hidden' : 'block'}`} onClick={decreaseHandler} />
-                                                    {
-                                                        item.quantity === 0 ? <div>ADD</div> : <div>{item.quantity}</div>
-                                                    }
-                                                    <IoMdAdd className={`cursor-pointer text-lg ${item.quantity === data.maxQuantity ? 'hidden' : 'block'}`} onClick={increaseHandler} />
-                                                </button>
-                                            </div>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                            :
-                            <div className='w-full h-[15rem] flex flex-col items-center justify-center gap-4'>
-                                <div className="w-full text-center text-gray-700 font-medium text-xl">
-                                    Oops! Your cart is empty!
+                                        )
+                                    })}
                                 </div>
-                                <button onClick={() => navigate("/")}
-                                    className='py-2 px-5 whitespace-nowrap text-white bg-gray-900 hover:bg-gray-800 rounded-md'>
-                                    Order now
-                                </button>
-                            </div>
-                    }
-                </DialogBody>
-            </Dialog >
+                                :
+                                <div className='w-full h-[15rem] flex flex-col items-center justify-center gap-4'>
+                                    <div className="w-full text-center text-gray-700 font-medium text-xl">
+                                        Oops! Your cart is empty!
+                                    </div>
+                                    <button onClick={onClose}
+                                        className='py-2 px-5 whitespace-nowrap text-white bg-gray-900 hover:bg-gray-800 rounded-md'>
+                                        Order now
+                                    </button>
+                                </div>
+                        }
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
         </>
     )
 }

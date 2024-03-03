@@ -15,7 +15,7 @@ import { useAppContext } from '../../ContextReducer/AppContext';
 
 const NavBar = ({ bgwhite }) => {
 
-    const { handleOpen } = useAppContext();
+    const { onOpen } = useAppContext();
 
     const [openRight, setOpenRight] = React.useState(false);
 
@@ -86,7 +86,7 @@ const NavBar = ({ bgwhite }) => {
                             {
                                 isUserLoggedIn ?
                                     <>
-                                        <BsCart3 className='text-xl cursor-pointer' onClick={handleOpen} />
+                                        <BsCart3 className='text-xl cursor-pointer' onClick={onOpen} />
                                         <IoHeartOutline className='text-2xl cursor-pointer' />
                                         <BsBell className='text-xl cursor-pointer' />
                                         <GrMenu className='text-xl cursor-pointer' onClick={openDrawerRight} />
@@ -102,7 +102,7 @@ const NavBar = ({ bgwhite }) => {
                             {
                                 isUserLoggedIn ?
                                     <>
-                                        <BsCart3 className='text-xl cursor-pointer' onClick={handleOpen} />
+                                        <BsCart3 className='text-xl cursor-pointer' onClick={onOpen} />
                                         <IoHeartOutline className='text-2xl cursor-pointer' />
                                         <BsBell className='text-xl cursor-pointer' />
                                         <GrMenu className='text-xl cursor-pointer' onClick={openDrawerRight} />
