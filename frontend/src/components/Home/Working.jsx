@@ -3,8 +3,7 @@ import React from 'react';
 const Working = () => {
     return (
         <>
-            <div id=''>&emsp;</div>
-            <div className="w-full h-fit flex flex-col items-center gap-6 m-16 mb-32">
+            <div className="w-full h-fit flex flex-col items-center gap-6">
                 <div className="w-full text-center text-3xl lg:text-4xl font-bold">
                     How it works?
                 </div>

@@ -5,7 +5,7 @@ import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import SignupPage2 from './pages/SignupPage2'
 import ProductPage from './pages/ProductPage'
-import ContactUs from './pages/ContactPage'
+import ContactUs from './components/Home/ContactPage'
 import Verification from './pages/Verification'
 import { AppContextProvider, useAppContext } from '../ContextReducer/AppContext'
 

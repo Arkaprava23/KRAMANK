@@ -6,8 +6,7 @@ import { MdDeliveryDining } from "react-icons/md";
 const WhyUs = () => {
     return (
         <>
-            <div id='features'>&emsp;</div>
-            <div className="w-full h-fit flex flex-col items-center gap-6 m-16">
+            <div className="w-full h-fit flex flex-col items-center gap-6">
                 <div className="w-full text-center text-3xl lg:text-4xl font-bold">
                     Why choose Kramank?
                 </div>

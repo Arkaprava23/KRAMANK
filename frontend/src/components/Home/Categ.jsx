@@ -10,19 +10,25 @@ const CategoryCard = ({ image, name, link, linksHidden, dark }) => {
         <div className={`min-w-[16rem] flex flex-col items-center p-4 border border-solid border-gray-900 rounded-lg gap-3 mb-2 ${dark ? 'bg-gray-900' : ''}`} >
             {
                 linksHidden ?
-                    <img className='w-full' src={`images/${image}`} alt="" />
-                    : <HashLink to={link} smooth>
-                        <img className='w-full rounded-[50%]' src={`../images/${image}`} alt="" />
-                    </HashLink>
+                    <>
+
+                        <img className='w-full' src={`images/${image}`} alt="" />
+                        <div className={`w-full flex flex-col items-center mt-2 ${dark ? 'bg-white' : 'bg-gray-900'} ${dark ? 'text-gray-900' : 'text-white'} p-3 rounded-md`}>
+                            <div className="w-full text-center text-xl font-semibold">
+                                {name}
+                            </div>
+                        </div>
+                    </> :
+                        <HashLink to={link} smooth>
+                            <img className='w-full rounded-[50%]' src={`../images/${image}`} alt="" />
+
+                            <div className={`w-full flex flex-col items-center mt-2 ${dark ? 'bg-white' : 'bg-gray-900'} ${dark ? 'text-gray-900' : 'text-white'} p-3 rounded-md`}>
+                                <div className="w-full text-center text-xl font-semibold">
+                                    {name}
+                                </div>
+                            </div>
+                        </HashLink>
             }
-            <div className={`w-full flex flex-col items-start gap-2 ${dark ? 'bg-white' : 'bg-gray-900'} ${dark ? 'text-gray-900' : 'text-white'} p-3 rounded-md`}>
-                <div className="w-full text-xl font-semibold">
-                    {name}
-                </div>
-                {/* <button className='w-full border border-solid border-white py-2 px-4 whitespace-nowrap hover:bg-white hover:text-gray-900 font-medium hover:font-semibold'>
-                    Check out
-                </button> */}
-            </div>
         </div>
     )
 }
@@ -34,21 +40,36 @@ const Categories = ({ linksHidden, labelName }) => {
     useEffect(() => {
         const flexContainer = flexContainerRef.current;
         let scrollInterval;
+        let scrollPosition = 0;
+        let direction = 1; // Initial direction of scrolling
 
         const startScrolling = () => {
             scrollInterval = setInterval(() => {
                 if (scrolling) {
-                    if (flexContainer.scrollLeft < flexContainer.scrollWidth - flexContainer.clientWidth) {
-                        flexContainer.scrollLeft += 1;
-                    } else {
-                        flexContainer.scrollLeft = 0;
+                    // Check if reached the end of the container
+                    if (scrollPosition >= flexContainer.scrollWidth - flexContainer.clientWidth) {
+                        direction = -1; // Change direction to reverse
+                    } else if (scrollPosition <= 0) {
+                        direction = 1; // Change direction to forward
                     }
+
+                    // Increment or decrement scroll position based on direction
+                    scrollPosition += direction;
+
+                    // Set the scroll position
+                    flexContainer.scrollTo({
+                        left: scrollPosition,
+                        behavior: 'smooth' // Smooth scrolling effect
+                    });
                 }
-            }, 10);
+            }, 15);
         };
+
         startScrolling();
+
         return () => clearInterval(scrollInterval);
     }, [scrolling]);
+
 
     return (
         <>
@@ -58,7 +79,6 @@ const Categories = ({ linksHidden, labelName }) => {
                     {labelName}
                 </div>
                 <div className="w-[90%] lg:w-[95%] flex items-center justify-start gap-6 overflow-auto scrollDiv" ref={flexContainerRef} >
-                    <CategoryCard image='allCat.png' name="All products" link=".#all-products" linksHidden={linksHidden} dark={true} />
                     <CategoryCard image='catFruit.png' name="Fresh fruits" link=".#fresh-fruits" linksHidden={linksHidden} />
                     <CategoryCard image='catJuice.png' name="Fresh juice" link="#fresh-juices" linksHidden={linksHidden} />
                     <CategoryCard image='catSnacks.png' name="Delicious snacks" link="" linksHidden={linksHidden} />

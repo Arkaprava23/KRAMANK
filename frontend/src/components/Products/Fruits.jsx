@@ -3,6 +3,7 @@ import { IoMdAdd } from "react-icons/io";
 import { MdOutlineCancel } from "react-icons/md";
 import { CiDiscount1 } from "react-icons/ci";
 import { FiMinus } from "react-icons/fi";
+import { useAppContext } from '../../../ContextReducer/AppContext';
 
 const productDataApple = {
     productName: 'Apple',
@@ -28,41 +29,51 @@ const productDataBanana = {
 
 const ProductCard = ({ data }) => {
 
+    const { cart, addToCart } = useAppContext();
+
     const [quantity, setQuantity] = useState(Number(data.minQuantity));
 
     const [price, setPrice] = useState(data.productPrice);
 
+    const [total, setTotal] = useState(0);
+
     const addDiscount = () => {
         setPrice(data.discount[0]);
         setQuantity(data.discount[1]);
-        setClicked(true);
-        setClicked1(false);
+        addToCart(data.productName, Number(data.discount[1]), Number(data.discount[0])*Number(data.discount[1]));
     }
 
     const removeDiscount = () => {
         setPrice(data.productPrice);
         setQuantity(data.minQuantity);
+        addToCart(data.productName, 0, 0);
     }
 
     const addDiscount1 = () => {
         setPrice(data.discount1[0]);
         setQuantity(data.discount1[1]);
+        addToCart(data.productName, Number(data.discount1[1]), Number(data.discount1[0])*Number(data.discount1[1]));
     }
 
     const removeDiscount1 = () => {
         setPrice(data.productPrice);
         setQuantity(data.minQuantity);
+        addToCart(data.productName, 0, 0);
     }
 
     const increaseHandler = () => {
         setPrice(data.productPrice);
         setQuantity(prev => prev + 1);
+        addToCart(data.productName, Number(quantity + 1), Number(data.productPrice) * Number(quantity + 1));
     }
 
     const decreaseHandler = () => {
         setPrice(data.productPrice);
         setQuantity(prev => prev - 1);
+        addToCart(data.productName, Number(quantity - 1), Number(data.productPrice) * Number(quantity - 1));
     }
+
+    console.log(cart);
 
     return (
         <div className="w-fit flex flex-col lg:flex-row items-center rounded-xl border border-solid border-gray-900">
@@ -75,7 +86,7 @@ const ProductCard = ({ data }) => {
                             ₹<span className='text-xl font-semibold'>
                                 {
                                     quantity === data.discount[1] ?
-                                    data.discount[0] * Number(quantity) : quantity === data.discount1[1] ? data.discount1[0] * Number(quantity) : price * Number(quantity)
+                                        data.discount[0] * Number(quantity) : quantity === data.discount1[1] ? data.discount1[0] * Number(quantity) : price * Number(quantity)
                                 }
                             </span>
                         </div>
