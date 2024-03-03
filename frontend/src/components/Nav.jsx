@@ -10,11 +10,12 @@ import { RiShoppingBag3Line } from "react-icons/ri";
 import { AiOutlineMail, AiOutlineWallet } from "react-icons/ai";
 import { VscNewFile } from "react-icons/vsc";
 import { IoCallOutline } from "react-icons/io5";
-import {
-    Drawer,
-} from "@material-tailwind/react";
+import {Drawer} from "@material-tailwind/react";
+import { useAppContext } from '../../ContextReducer/AppContext';
 
-const NavBar = () => {
+const NavBar = ({ bgwhite }) => {
+
+    const { handleOpen } = useAppContext();
 
     const [openRight, setOpenRight] = React.useState(false);
 
@@ -52,8 +53,9 @@ const NavBar = () => {
         };
     }, []);
 
+
     return (
-        <div className={`w-full fixed top-0 left-0 z-50 flex items-center justify-between p-4 transition duration-30 ${scrolling ? 'bg-white' : 'bg-transparent'}`}>
+        <div className={`w-full fixed top-0 left-0 z-50 flex items-center justify-between p-4 transition duration-30 ${scrolling || bgwhite ? 'bg-white' : 'bg-transparent'}`}>
             {
                 !isUserLoggedIn ?
                     <div className="w-full flex flex-col items-center">
@@ -65,7 +67,16 @@ const NavBar = () => {
                                         login / signup
                                     </button>
                                 </div>
-                                : <img className='w-56' src="images/logo-white.png" alt="" />
+                                :
+                                <>
+                                    <img className='block lg:hidden w-56' src="images/logo-white.png" alt="" />
+                                    <div className="w-full hidden lg:flex items-center justify-between">
+                                        <img className='w-48' src="images/logo-white.png" alt="" />
+                                        <button className={`py-2 px-6 rounded-[2rem] font-semibold text-xl bg-white hover:bg-gray-200 text-gray-900`} onClick={() => navigate("/login")}>
+                                            login / signup
+                                        </button>
+                                    </div>
+                                </>
                         }
                     </div>
                     :
@@ -75,7 +86,7 @@ const NavBar = () => {
                             {
                                 isUserLoggedIn ?
                                     <>
-                                        <BsCart3 className='text-xl cursor-pointer' />
+                                        <BsCart3 className='text-xl cursor-pointer' onClick={handleOpen} />
                                         <IoHeartOutline className='text-2xl cursor-pointer' />
                                         <BsBell className='text-xl cursor-pointer' />
                                         <GrMenu className='text-xl cursor-pointer' onClick={openDrawerRight} />
@@ -91,7 +102,7 @@ const NavBar = () => {
                             {
                                 isUserLoggedIn ?
                                     <>
-                                        <BsCart3 className='text-xl cursor-pointer' />
+                                        <BsCart3 className='text-xl cursor-pointer' onClick={handleOpen} />
                                         <IoHeartOutline className='text-2xl cursor-pointer' />
                                         <BsBell className='text-xl cursor-pointer' />
                                         <GrMenu className='text-xl cursor-pointer' onClick={openDrawerRight} />

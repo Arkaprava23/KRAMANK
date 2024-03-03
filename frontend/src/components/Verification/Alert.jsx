@@ -1,7 +1,5 @@
-import React from "react";
 import { MdVerifiedUser } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import VerificationButton from "../pages/Verification";
 
 const VerifyAlert = () => {
 	const navigate = useNavigate();
@@ -24,7 +22,13 @@ const VerifyAlert = () => {
 					Complete your company setup to continue exploring
 				</div>
 				<div className="flex justify-center">
-					<VerificationButton />
+					<button
+						type="button"
+						onClick={() => navigate("/verify")}
+						className="inline-flex items-center justify-center px-4 py-2 mr-2 text-sm font-medium text-white bg-gray-900 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700"
+					>
+						Start
+					</button>
 				</div>
 			</div>
 		</div>

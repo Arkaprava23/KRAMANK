@@ -4,21 +4,20 @@ import { HashLink } from 'react-router-hash-link';
 
 const CategoryCard = ({ image, name, link, linksHidden, dark }) => {
 
-    const navigate = useNavigate();
-
     return (
-        <div className={`min-w-[16rem] flex flex-col items-center p-4 border border-solid border-gray-900 rounded-lg gap-3 mb-2 ${dark ? 'bg-gray-900' : ''}`} >
+        <>
             {
                 linksHidden ?
-                    <>
-
+                    <div className={`min-w-[16rem] flex flex-col items-center p-4 border border-solid border-gray-900 rounded-lg gap-3 mb-2`} >
                         <img className='w-full' src={`images/${image}`} alt="" />
                         <div className={`w-full flex flex-col items-center mt-2 ${dark ? 'bg-white' : 'bg-gray-900'} ${dark ? 'text-gray-900' : 'text-white'} p-3 rounded-md`}>
                             <div className="w-full text-center text-xl font-semibold">
                                 {name}
                             </div>
                         </div>
-                    </> :
+                    </div>
+                    :
+                    <div className={`min-w-[16rem] flex flex-col items-center p-4 border border-solid border-gray-900 rounded-lg gap-3 mb-2`} >
                         <HashLink to={link} smooth>
                             <img className='w-full rounded-[50%]' src={`../images/${image}`} alt="" />
 
@@ -28,8 +27,9 @@ const CategoryCard = ({ image, name, link, linksHidden, dark }) => {
                                 </div>
                             </div>
                         </HashLink>
+                    </div>
             }
-        </div>
+        </>
     )
 }
 

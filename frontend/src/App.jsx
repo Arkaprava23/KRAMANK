@@ -6,8 +6,8 @@ import SignupPage from './pages/SignupPage'
 import SignupPage2 from './pages/SignupPage2'
 import ProductPage from './pages/ProductPage'
 import ContactUs from './components/Home/ContactPage'
-import Verification from './pages/Verification'
-import { AppContextProvider, useAppContext } from '../ContextReducer/AppContext'
+import { AppContextProvider } from '../ContextReducer/AppContext'
+import CompanyVerificationPage from './pages/CompanyVerificationPage'
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/signup2" element={<SignupPage2 />} />
         <Route path="/contact" element={<ContactUs />} />
-        <Route path="/verify" element={<Verification />} />
+        <Route path="/verify" element={<CompanyVerificationPage/>} />
 
       </Routes>
     </AppContextProvider>

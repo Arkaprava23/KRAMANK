@@ -8,7 +8,7 @@ export const AppContextProvider = ({ children }) => {
     ]);
 
 
-    const addToCart = (name, quantity, totalPrice) => {
+    const addToCart = (name, amount, quantity, totalPrice) => {
         if (quantity === 0 || totalPrice === 0) {
             const existingItemIndex = cart.findIndex((item) => item.name === name);
             if (existingItemIndex !== -1) {
@@ -21,6 +21,7 @@ export const AppContextProvider = ({ children }) => {
 
         const newItem = {
             name: name,
+            amount: amount,
             quantity: quantity,
             price: totalPrice
         };
@@ -30,6 +31,7 @@ export const AppContextProvider = ({ children }) => {
             const updatedCart = [...cart];
             updatedCart[existingItemIndex] = {
                 ...updatedCart[existingItemIndex],
+                amount: amount,
                 quantity: quantity,
                 price: totalPrice
             };
@@ -39,11 +41,11 @@ export const AppContextProvider = ({ children }) => {
         }
     };
 
-
-
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(!open);
 
     return (
-        <AppContext.Provider value={{ cart, addToCart }}>
+        <AppContext.Provider value={{ cart, addToCart, open, handleOpen }}>
             {children}
         </AppContext.Provider>
     );

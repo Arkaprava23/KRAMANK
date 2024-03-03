@@ -6,9 +6,10 @@ const AuthContext = createContext();
 export default function AuthContextProvider({ children }) {
   const [signupName, setSignupName] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
+  const [verifyStep, setverifyStep] = useState(0);
 
   return (
-    <AuthContext.Provider value={{ signupName, setSignupName, signupEmail, setSignupEmail }}>
+    <AuthContext.Provider value={{ signupName, setSignupName, signupEmail, setSignupEmail,verifyStep,setverifyStep}}>
       {children}
     </AuthContext.Provider>
   );
