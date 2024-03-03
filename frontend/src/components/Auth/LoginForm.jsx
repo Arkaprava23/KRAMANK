@@ -2,6 +2,7 @@ import  { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
+import { BACKEND_APP_API_URL } from "../../../links/Links";
 
 const LoginForm = () => {
 	const navigate=useNavigate();
@@ -48,6 +49,7 @@ const LoginForm = () => {
 
 		return isValid;
 	};
+
 	const handleLogin = async (e) => {
 		
 		e.preventDefault();
@@ -63,16 +65,18 @@ const LoginForm = () => {
 
 				console.log(userData);
 				const response = await axios.post(
-					"https://kramank.onrender.com/login",
+					BACKEND_APP_API_URL + '/login',
 					userData
 				);
 
 				if (response.status === 200) {
-					const { token } =
+					const { token, name } =
 						await response.data;
 					console.log(token);
 					localStorage.setItem("token", token);
-					navigate("/products");
+					localStorage.setItem("name", name);
+					navigate("/");
+					window.location.reload();
 				} else if (response.status === 202) {
 					toast.error("user not found");
 				} else if (response.status === 203) {

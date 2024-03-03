@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default:false,
     }
-   
+
 });
 
 export const User = mongoose.model('User', userSchema);

@@ -7,20 +7,24 @@ import SignupPage2 from './pages/SignupPage2'
 import ProductPage from './pages/ProductPage'
 import ContactUs from './pages/ContactPage'
 import CompanyVerificationPage from './pages/CompanyVerificationPage'
+import { AppContextProvider, useAppContext } from '../ContextReducer/AppContext'
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<LoginPage/>} />
-      <Route path="/signup" element={<SignupPage />} />
-      <Route path="/signup2" element={<SignupPage2/>} />
 
-      <Route path="/products" element={<ProductPage/>} />
-      <Route path="/contact" element={<ContactUs/>} />
-      <Route path="/verify" element={<CompanyVerificationPage/>} />
-      
-    </Routes>
+  const isUserLoggedIn = localStorage.getItem('token') ? true : false;
+
+  return (
+    <AppContextProvider>
+      <Routes>
+        <Route path="/" element={isUserLoggedIn ? <ProductPage /> : <Home />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/signup2" element={<SignupPage2 />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/verify" element={<CompanyVerificationPage/>} />
+
+      </Routes>
+    </AppContextProvider>
   )
 }
 

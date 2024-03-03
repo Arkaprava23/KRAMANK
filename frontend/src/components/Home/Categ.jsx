@@ -57,7 +57,7 @@ const Categories = ({ linksHidden, labelName }) => {
                 <div className="w-full text-center text-3xl lg:text-4xl font-bold">
                     {labelName}
                 </div>
-                <div className="w-[90%] lg:w-[95%] flex items-center justify-start gap-6 overflow-x-scroll" ref={flexContainerRef}>
+                <div className="w-[90%] lg:w-[95%] flex items-center justify-start gap-6 overflow-auto scrollDiv" ref={flexContainerRef} >
                     <CategoryCard image='allCat.png' name="All products" link=".#all-products" linksHidden={linksHidden} dark={true} />
                     <CategoryCard image='catFruit.png' name="Fresh fruits" link=".#fresh-fruits" linksHidden={linksHidden} />
                     <CategoryCard image='catJuice.png' name="Fresh juice" link="#fresh-juices" linksHidden={linksHidden} />
